@@ -1,0 +1,10 @@
+const factory = require('./../controllers/handlerFactory');
+const User = require('./../models/userModel');
+const Tour= require('./../models/tourModel');
+exports.getUser = factory.getOne(User);
+exports.getAll = factory.getAll(User);
+exports.deleteUser = factory.deleteOne(User);
+exports.updateUser = factory.updateOne(User);
+exports.createUser = factory.createOne(User);
+exports.AddToWishList = factory.wishList(User);
+exports.getWishList = factory.getWishList(User,'wishList');
