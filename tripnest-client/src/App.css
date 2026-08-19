@@ -50,16 +50,6 @@
   width: 100px;
 }
 
-.heading {
-  display: flex;
-  gap: 10px;
-}
-
-.heading1 {
-  font-size: 40px;
-  margin-top: 10px;
-  margin-bottom: 0px;
-}
 
 /* Fixed your original typo from ".heor1" to match ".hero1" usage */
 .heor1,
@@ -236,13 +226,13 @@
 
 .discoversize {
   font-size: clamp(2.5rem, 5vw, 4.5rem);
-  margin-top: 0px;
+  margin-top: 50px;
   margin-bottom: 0px;
   font-family: 'Georgia', serif;
   font-weight: 700;
-  color: #1a202c;
+  color: #F5F0E6;
   letter-spacing: -0.03em;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
   text-wrap: balance;
   text-align: center;
 }
@@ -795,14 +785,14 @@
 .heading1 {
   font-size: 22px;
   font-weight: 800;
-  color: #2563eb !important;
+  color: #dea32c !important;
   margin: 0;
   letter-spacing: 1px;
 }
 
 .brandtext p {
   font-size: 12px;
-  color: #777 !important;
+  color: #08d3bb !important;
   margin: 2px 0 0;
 }
 
@@ -859,7 +849,7 @@
   padding: 8px 18px;
   border-radius: 8px;
   color: #fff !important;
-  background: #2563eb;
+  background: #2f487e;
 }
 
 .navLinks li:nth-child(3) a:hover,
@@ -875,7 +865,7 @@
 
 /* Profile link styled distinctly */
 .navLinks li:last-child a {
-  color: #2563eb !important;
+  color: #d6d8db !important;
   border: 1.5px solid #2563eb;
   padding: 6px 14px;
   border-radius: 20px;
@@ -903,9 +893,12 @@
 
 .review {
   display: flex;
+  width: 400px;
+  position: relative;
+  left: 550px;
   justify-content: center;
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
 
 }
 
@@ -952,13 +945,14 @@
 }
 
 /* Container and Layout Setup */
-.loginpage{
-  display:flex;
-  margin-top:100px;
-  height:700px;
+.loginpage {
+  display: flex;
+  margin-top: 100px;
+  height: 700px;
   justify-content: center;
   align-items: center;
 }
+
 .login-container {
   background-color: #1e293b;
   padding: 40px;
@@ -966,7 +960,7 @@
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
   width: 100%;
   max-width: 400px;
-  height:500px;
+  height: 500px;
   box-sizing: border-box;
 }
 
@@ -1009,8 +1003,8 @@ h2 {
 
 /* Floating Animation Logic */
 /* The label moves up if the input is focused OR has the 'has-text' class */
-.input-group1 input:focus ~ label,
-.input-group1 input.has-text ~ label {
+.input-group1 input:focus~label,
+.input-group1 input.has-text~label {
   transform: translateY(-24px);
   font-size: 12px;
   color: #38bdf8;
@@ -1043,137 +1037,330 @@ h2 {
   transform: scale(0.98);
 }
 
-.signupinloginbutton{
-  display:flex;
+.signupinloginbutton {
+  display: flex;
   justify-content: center;
   align-items: center;
   text-decoration-line: none;
-  width:300px;
-  font-size:25px;
+  width: 300px;
+  font-size: 25px;
   color: rgb(255, 0, 34);
 }
-.signdiv{
-  width:330px;
-  height:40px;
-  display:flex;
+
+.signdiv {
+  width: 330px;
+  height: 40px;
+  display: flex;
   justify-content: center;
-  align-items: center;  
-  background-color:greenyellow;
-  border-radius:5px;
+  align-items: center;
+  background-color: greenyellow;
+  border-radius: 5px;
 }
+
 /* signup */
 /* Container styling on a white page background */
 .signup-container {
-    background: #ffffff;
-    max-width: 420px;
-    margin: 60px auto;
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-    border: 1px solid #eaeaea;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #ffffff;
+  max-width: 420px;
+  margin: 60px auto;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  border: 1px solid #eaeaea;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .signup-container h2 {
-    color: #1a1a1a;
-    font-size: 28px;
-    margin-bottom: 30px;
-    text-align: center;
-    font-weight: 600;
+  color: #1a1a1a;
+  font-size: 28px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: 600;
 }
 
 /* Floating Label Input Groups */
 .input-group1 {
-    position: relative;
-    margin-bottom: 24px;
+  position: relative;
+  margin-bottom: 24px;
 }
 
 .input-group1 input {
-    width: 100%;
-    padding: 12px 16px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    background: #ffffff;
-    color: #333333;
-    font-size: 16px;
-    outline: none;
-    box-sizing: border-box;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #333333;
+  font-size: 16px;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 /* Floating label styling */
 .input-group1 label {
-    position: absolute;
-    left: 14px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #777777;
-    font-size: 16px;
-    pointer-events: none;
-    transition: 0.2s ease all;
-    background-color: #ffffff;
-    padding: 0 4px;
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #777777;
+  font-size: 16px;
+  pointer-events: none;
+  transition: 0.2s ease all;
+  background-color: #ffffff;
+  padding: 0 4px;
 }
 
 /* Focus and text detection rules to lift the label up */
 .input-group1 input:focus,
 .input-group1 input.has-text {
-    border-color: #0066cc;
-    box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.15);
+  border-color: #0066cc;
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.15);
 }
 
-.input-group1 input:focus ~ label,
-.input-group1 input.has-text ~ label {
-    top: 0;
-    font-size: 12px;
-    color: #0066cc;
-    font-weight: 500;
+.input-group1 input:focus~label,
+.input-group1 input.has-text~label {
+  top: 0;
+  font-size: 12px;
+  color: #0066cc;
+  font-weight: 500;
 }
 
 /* Signup Primary Button */
 .signup-btn {
-    width: 100%;
-    padding: 14px;
-    background-color: #1a1a1a;
-    color: #ffffff;
-    border: none;
-    border-radius: 6px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-    margin-top: 10px;
+  width: 100%;
+  padding: 14px;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-top: 10px;
 }
 
 .signup-btn:hover {
-    background-color: #333333;
+  background-color: #333333;
 }
 
 /* Bottom Navigation Section */
 .logininsignup {
-    margin-top: 32px;
-    padding-top: 24px;
-    border-top: 1px solid #eaeaea;
-    text-align: center;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid #eaeaea;
+  text-align: center;
 }
 
 .logininsignup h2 {
-    font-size: 14px;
-    color: #666666;
-    margin-bottom: 12px;
-    font-weight: 400;
+  font-size: 14px;
+  color: #666666;
+  margin-bottom: 12px;
+  font-weight: 400;
 }
 
 .logininsignupbutton {
-    display: inline-block;
-    color: #0066cc;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 600;
-    transition: color 0.2s ease;
+  display: inline-block;
+  color: #0066cc;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: color 0.2s ease;
 }
 
 .logininsignupbutton:hover {
-    text-decoration: underline;
-    color: #004499;
+  text-decoration: underline;
+  color: #004499;
+}
+
+.reviewForm {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* Container Box */
+.review-card-container {
+  max-width: 28rem;
+  width: 100%;
+  padding: 1.5rem;
+  background-color: #ffffff;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border: 1px solid #f3f4f6;
+}
+
+/* Card Heading Text */
+.review-card-heading {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 1rem;
+}
+
+/* Validation Error Field */
+.review-error-text {
+  color: #ef4444;
+  font-size: 0.75rem;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+/* Base Form Grid Layout */
+.review-form-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Horizontal Row Wrap for Stars */
+.review-stars-row {
+  display: flex;
+  gap: 0.25rem;
+}
+
+/* Button Reset Overrides for Individual Stars */
+.review-star-trigger {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-size: 1.5rem;
+  transition: color 0.15s ease;
+}
+
+/* Active Highlighted Star State */
+.star-filled {
+  color: #fbbf24;
+}
+
+/* Dim Unfilled Star State */
+.star-empty {
+  color: #e5e7eb;
+}
+
+/* Main Call to Action Button */
+.review-submit-action {
+  width: 100%;
+  background-color: #111827;
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  font-size: 0.875rem;
+  border: none;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background-color 0.15s ease;
+}
+
+/* Button Hover State Accent */
+.review-submit-action:hover {
+  background-color: #1f2937;
+}
+
+/* Base Navbar Container (Transparent Overlay) */
+.navbar {
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+
+  /* Absolute or Fixed positioning overlays the nav on top of your background/hero image */
+  position: fixed;
+  /* Floats over content AND stays pinned on scroll */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+
+  /* Subtle glassmorphism effect for text readability */
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  width:stretch;
+}
+
+/* Brand Section */
+.heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+}
+
+.brandtext {
+  display: flex;
+  flex-direction: column;
+}
+
+.heading1 {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #ffffff;
+  /* Switched to light text for dark/image backgrounds */
+  letter-spacing: 1px;
+  line-height: 1.1;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.brandtext p {
+  margin: 2px 0 0 0;
+  font-size: 1.00rem;
+  color: #08d3bb;
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Navigation Links */
+.navLinks {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 1.8rem;
+}
+
+.navLinks li a {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 1.25rem;
+  transition: all 0.2s ease-in-out;
+  padding: 0.5rem 0.2rem;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.navLinks li a:hover {
+  color: #e0f2fe;
+  /* Light sky blue hover highlight */
+  opacity: 0.9;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .navLinks {
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }

@@ -1,4 +1,4 @@
-import x from "./../assets/hero.png"
+
 import { Link } from "react-router-dom"
 function Hero1() {
     return (
