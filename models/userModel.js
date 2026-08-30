@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt');
 const crypto = require('crypto');
 const validator = require('validator');
 const Tour = require('./tourModel');
+const Review = require('./reviewModel');
 const userSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -56,7 +57,6 @@ userSchema.pre('save',function(){
     if(!this.isModified('password')|| this.isNew)return;
      this.passwordChangedAt = Date.now()-1000;
 });
-
 userSchema.methods.correctPassword = async function (candidatePassword) {
     return await bcrypt.compare(candidatePassword, this.password);
 }

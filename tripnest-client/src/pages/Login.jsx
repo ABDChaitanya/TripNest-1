@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import api from "./../services/api.js";
-export default function Login({isLogin,setIslogin}) {
+export default function Login({isLogin,setLoginId,setIslogin}) {
     const [formData, setFormData] = useState({
         email: '',
         password: ''
@@ -10,7 +10,7 @@ export default function Login({isLogin,setIslogin}) {
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-
+    const[isValid,setIsValid] = useState(true);
     const handleChange = (e) => {
         const { id, value } = e.target;
         setFormData((prev) => ({
@@ -33,14 +33,18 @@ export default function Login({isLogin,setIslogin}) {
                 email: formData.email,
                 password: formData.password
             })
-            console.log("Login info:", result);
             if (result.data.status === "success") {
                 alert("Logged in successfull");
+                setLoginId(result.data.id);
                 setIslogin(true);
                 navigate("/");
             }
 
         } catch (err) {
+            console.log(err.status);
+            if(err.status==400){
+                setIsValid(false);
+            }
             console.log("Login failed", err.response?.data);
         }
     };
@@ -76,7 +80,9 @@ export default function Login({isLogin,setIslogin}) {
                     </div>
 
                     <button type="submit" className="login-btn">Log In</button>
+                    {!isValid && (<h2>Email or password was wrong</h2>)}
                 </form>
+                
                 <div className="signupinlogin">
                     <h2>Don't have a account create one here⬇️</h2>
                     <div className="signdiv">

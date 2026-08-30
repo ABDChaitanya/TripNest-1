@@ -262,7 +262,11 @@
   display: flex;
   padding: 20px;
   margin: 0px;
-  justify-content: center;
+
+  
+    position: relative;
+    bottom:0px;
+    /* width: stretch; */
 }
 
 .input-group {
@@ -892,14 +896,18 @@
 }
 
 .review {
+  width: 100%;
+  max-width: 600px;
+
+  margin: 80px auto 40px;
+
   display: flex;
-  width: 400px;
-  position: relative;
-  left: 550px;
   justify-content: center;
   align-items: center;
+
   flex-direction: column;
 
+  position: static;
 }
 
 .searchbutton1 {
@@ -960,7 +968,7 @@
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
   width: 100%;
   max-width: 400px;
-  height: 500px;
+  height: 600px;
   box-sizing: border-box;
 }
 
@@ -1173,14 +1181,19 @@ h2 {
   text-decoration: underline;
   color: #004499;
 }
-
 .reviewForm {
-  display: flex;
-  gap: 30px;
-  justify-content: center;
-  flex-direction: column;
-}
+  width: 100%;
+  max-width: 600px;
 
+  margin: 40px auto 80px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex-direction: column;
+  gap: 30px;
+}
 /* Container Box */
 .review-card-container {
   max-width: 28rem;
@@ -1363,4 +1376,11 @@ h2 {
     flex-wrap: wrap;
     justify-content: center;
   }
+}
+
+.bookingsuccess{
+  position:absolute;
+  justify-content: center;
+  align-items: center;
+  top:100px;
 }

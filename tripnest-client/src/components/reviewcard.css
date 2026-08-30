@@ -1,0 +1,46 @@
+.review-card1{
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 16px;
+  width: 800px;
+  height:100px;
+  gap:10px;
+  margin-bottom:10px;
+  position:relative;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+.card-header1{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.tournament-name1{
+  font-size: 18px;
+  color: #333333;
+  margin: 0;
+}
+
+.rating-badge1{
+  background-color: #f1f8e9;
+  color: #2e7d32;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.review-info1 p {
+  font-size: 14px;
+  color: #555555;
+  margin: 6px 0;
+}
+
+.review-text1{
+  font-style: italic;
+  color: #444444;
+}

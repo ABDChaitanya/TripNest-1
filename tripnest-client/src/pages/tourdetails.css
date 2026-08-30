@@ -1,0 +1,573 @@
+/* ================================
+   TOUR DETAILS PAGE
+================================ */
+
+.tour-page-wrapper {
+  min-height: 100vh;
+  background: #f5f7fb;
+  color: #1f2937;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ================================
+   HERO
+================================ */
+
+.tour-hero-banner {
+  position: relative;
+  width: 100%;
+  min-height: 480px;
+
+  display: flex;
+  align-items: flex-end;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  padding-bottom: 55px;
+}
+
+.hero-gradient-overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.05),
+      rgba(0, 0, 0, 0.8)
+    );
+
+  z-index: 1;
+}
+
+.hero-banner-content {
+  position: relative;
+  z-index: 2;
+
+  width: 90%;
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  color: white;
+}
+
+.tour-category-badge {
+  display: inline-block;
+
+  padding: 7px 15px;
+
+  border-radius: 20px;
+
+  background: #2563eb;
+
+  font-size: 0.8rem;
+  font-weight: 700;
+
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.tour-main-title {
+  margin: 15px 0 10px;
+
+  font-size: clamp(2.2rem, 5vw, 4rem);
+
+  font-weight: 800;
+
+  line-height: 1.1;
+
+  text-shadow: 0 3px 8px rgba(0, 0, 0, 0.45);
+}
+
+.tour-meta-info {
+  margin: 0;
+
+  font-size: 1.05rem;
+
+  color: rgba(255, 255, 255, 0.95);
+}
+
+/* ================================
+   MAIN LAYOUT
+================================ */
+.tour-main-layout {
+  width: 90%;
+  max-width: 1200px;
+
+  margin: 50px auto;
+
+  display: grid;
+
+  grid-template-columns: 2fr 1fr;
+
+  gap: 45px;
+
+  align-items: start;
+}
+
+.tour-left-column {
+  display: flex;
+  flex-direction: column;
+  gap: 45px;
+}
+.tour-right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.content-block {
+  background: white;
+
+  padding: 30px;
+
+  border-radius: 14px;
+
+  border: 1px solid #e5e7eb;
+
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.section-title {
+  margin: 0 0 18px;
+
+  padding-bottom: 12px;
+
+  border-bottom: 2px solid #e5e7eb;
+
+  color: #111827;
+
+  font-size: 1.5rem;
+
+  font-weight: 700;
+}
+
+.overview-text {
+  margin: 0;
+
+  color: #596579;
+
+  font-size: 1rem;
+
+  line-height: 1.8;
+
+  white-space: pre-line;
+}
+
+/* ================================
+   HIGHLIGHTS
+================================ */
+
+.highlights-card {
+  padding: 30px;
+
+  background: white;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 14px;
+
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.card-title {
+  margin: 0 0 20px;
+
+  color: #111827;
+
+  font-size: 1.35rem;
+
+  font-weight: 700;
+}
+
+.highlights-list {
+  margin: 0;
+
+  padding: 0;
+
+  list-style: none;
+}
+
+.highlight-item {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 12px;
+
+  margin-bottom: 15px;
+}
+
+.check-icon {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-width: 24px;
+  height: 24px;
+
+  border-radius: 50%;
+
+  background: #dcfce7;
+
+  color: #16a34a;
+
+  font-weight: 800;
+}
+
+.item-text {
+  color: #596579;
+
+  line-height: 1.6;
+}
+
+/* ================================
+   ITINERARY
+================================ */
+
+.timeline-container {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 25px;
+}
+
+.timeline-step {
+  position: relative;
+
+  padding-left: 30px;
+
+  border-left: 2px solid #2563eb;
+}
+
+.timeline-node {
+  position: absolute;
+
+  left: -8px;
+  top: 4px;
+
+  width: 14px;
+  height: 14px;
+
+  border-radius: 50%;
+
+  background: #2563eb;
+
+  border: 3px solid white;
+
+  box-shadow: 0 0 0 2px #2563eb;
+}
+
+.step-title {
+  margin: 0 0 7px;
+
+  color: #111827;
+
+  font-size: 1.05rem;
+}
+
+.step-desc {
+  margin: 0;
+
+  color: #64748b;
+
+  font-size: 0.95rem;
+
+  line-height: 1.6;
+}
+
+/* ================================
+   BOOKING CARD
+================================ */
+
+.tour-right-sidebar {
+  position: relative;
+}
+
+.sticky-booking-card {
+  position: sticky;
+
+  top: 30px;
+
+  padding: 30px;
+
+  background: white;
+
+  border-radius: 16px;
+
+  border: 1px solid #e5e7eb;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.booking-price-tag {
+  margin-bottom: 25px;
+
+  color: #64748b;
+
+  font-size: 1rem;
+}
+
+.price-amount {
+  color: #2563eb;
+
+  font-size: 2.3rem;
+
+  font-weight: 800;
+}
+
+/* ================================
+   BOOKING FORM
+================================ */
+
+.booking-form-element {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 20px;
+}
+
+.input-group {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+
+  width: 100%;
+}
+
+.input-label {
+  color: #374151;
+
+  font-size: 0.9rem;
+
+  font-weight: 700;
+}
+
+.form-input-field {
+  width: 100%;
+
+  padding: 13px 14px;
+
+  box-sizing: border-box;
+
+  border: 1px solid #d1d5db;
+
+  border-radius: 8px;
+
+  background: #fff;
+
+  color: #111827;
+
+  font-size: 1rem;
+
+  transition: 0.2s ease;
+}
+
+.form-input-field:hover {
+  border-color: #9ca3af;
+}
+
+.form-input-field:focus {
+  outline: none;
+
+  border-color: #2563eb;
+
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+/* ================================
+   BOOK BUTTON
+================================ */
+
+.submit-booking-btn {
+  width: 100%;
+
+  padding: 14px 18px;
+
+  border: none;
+
+  border-radius: 9px;
+
+  background: #2563eb;
+
+  color: white;
+
+  font-size: 1rem;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.submit-booking-btn:hover {
+  background: #1d4ed8;
+
+  transform: translateY(-1px);
+
+  box-shadow: 0 6px 15px rgba(37, 99, 235, 0.25);
+}
+
+.submit-booking-btn:active {
+  transform: translateY(0);
+}
+
+.instant-confirm-note {
+  margin: 15px 0 0;
+
+  color: #6b7280;
+
+  font-size: 0.85rem;
+
+  text-align: center;
+}
+
+/* ================================
+   LOADING
+================================ */
+
+.tour-loading-text {
+  min-height: 70vh;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  margin: 0;
+
+  background: #f5f7fb;
+
+  color: #64748b;
+
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* ================================
+   TESTIMONIALS
+================================ */
+
+.testimonials {
+  width: 90%;
+  max-width: 1200px;
+
+  margin: 60px auto;
+
+  display: flex;
+
+  gap: 25px;
+
+  flex-wrap: wrap;
+}
+
+.testicard {
+  flex: 1;
+
+  min-width: 280px;
+
+  padding: 25px;
+
+  background: white;
+
+  border-radius: 14px;
+
+  border: 1px solid #e5e7eb;
+
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.TestiSum {
+  margin: 0;
+
+  color: #4b5563;
+
+  font-size: 1rem;
+
+  line-height: 1.7;
+}
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 992px) {
+
+  .tour-main-layout {
+    grid-template-columns: 1fr;
+
+    gap: 30px;
+  }
+
+  .sticky-booking-card {
+    position: static;
+  }
+
+  .tour-hero-banner {
+    min-height: 400px;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .tour-hero-banner {
+    min-height: 350px;
+
+    padding-bottom: 35px;
+  }
+
+  .tour-main-layout {
+    width: 92%;
+
+    margin: 30px auto;
+  }
+
+  .tour-main-title {
+    font-size: 2.2rem;
+  }
+
+  .tour-meta-info {
+    font-size: 0.95rem;
+  }
+
+  .content-block,
+  .highlights-card,
+  .sticky-booking-card {
+    padding: 22px;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .tour-hero-banner {
+    min-height: 300px;
+  }
+
+  .tour-main-title {
+    font-size: 1.8rem;
+  }
+
+  .tour-main-layout {
+    width: 94%;
+  }
+
+  .price-amount {
+    font-size: 2rem;
+  }
+
+  .content-block,
+  .highlights-card,
+  .sticky-booking-card {
+    padding: 18px;
+  }
+
+}

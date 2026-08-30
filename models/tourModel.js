@@ -52,6 +52,7 @@ tourSchema.virtual('reviews', {
     foreignField: 'tour',
     localField: '_id'
 });
+//whenever any query on tour it populate the reviews
 tourSchema.pre(/^find/, function () {
     this.populate('reviews');
 });

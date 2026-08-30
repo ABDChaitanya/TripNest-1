@@ -1,0 +1,74 @@
+/* Container wrapper to isolate the layout */
+.bookingsuccess {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+  background-color: #f4f7f6;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 20px;
+}
+
+/* Ensure border-box applies to all internal elements */
+.bookingsuccess *, 
+.bookingsuccess *::before, 
+.bookingsuccess *::after {
+  box-sizing: border-box;
+}
+
+/* The success card container */
+.bookingsuccess > div {
+    background: #ffffff;
+    padding: 40px 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    max-width: 380px;
+    width: 100%;
+}
+
+/* Text styles scoped inside the component */
+.bookingsuccess p:first-of-type {
+    font-size: 22px;
+    font-weight: 700;
+    color: #2d3748;
+    margin: 20px 0 8px 0;
+}
+
+.bookingsuccess p:last-of-type {
+    font-size: 15px;
+    color: #718096;
+    margin: 0 0 24px 0;
+}
+
+/* Button styles scoped inside the component */
+.bookingsuccess button {
+    background-color: #4bb543;
+    color: white;
+    border: none;
+  padding: 12px 24px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.bookingsuccess button:hover {
+    background-color: #bd1f1f;
+}
+
+.bookingsuccess button:active {
+    transform: scale(0.98);
+}
+.bookingsuccess .goingbackpayment{
+    margin-top:10px;
+color: white;
+background-color: rgb(162, 25, 25);
+}
+.bookingsuccess .goingbackpayment:hover{
+    background-color: #42a13b;
+}
