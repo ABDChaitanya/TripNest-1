@@ -34,7 +34,7 @@ const limiter = rateLimit({
   ipv6Subnet:56
 })
 app.use(limiter);
-const accessOrigins = ["http://localhost:5173/",process.env.FRONTEND_URL]
+const accessOrigins = ["http://localhost:5173",process.env.FRONTEND_URL]
 app.use(cors({
   origin:accessOrigins,
   credentials:true
