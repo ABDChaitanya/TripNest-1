@@ -35,7 +35,7 @@ const limiter = rateLimit({
 })
 app.use(limiter);
 app.use(cors({
-  origin:"http://localhost:5173",
+  origin:process.env.FRONTED_URL,
   credentials:true
 }));
 app.set("query parser","extended");
