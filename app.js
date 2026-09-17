@@ -16,7 +16,7 @@ const bookingController = require('./controllers/bookingController');
 const cors = require("cors");
 const mongoose = require('mongoose')
 const app = express();
-const port = 3002;
+const port = process.env.PORT || 3000;
 // const upload = multer({dest:})
 app.use(helmet());
 app.post(
