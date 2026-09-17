@@ -13,6 +13,7 @@ import './App.css'
 function App() {
 const[isLogin,setIslogin] = useState(false);
 const[loginId,setLoginId] = useState("");
+    const [token,setToken] = useState("");
   return (
     <BrowserRouter>
     <Navbar isLogin={isLogin} setIslogin={setIslogin}/>
@@ -20,9 +21,9 @@ const[loginId,setLoginId] = useState("");
       <Route path="/" element={<Home/>}/>
       <Route path="/tours" element={<Tours/>} />
       <Route path="/tours/:id" element={<TourDetails loginId={loginId}/>} />  
-      <Route path="/login" element={<Login isLogin={isLogin} setLoginId={setLoginId} setIslogin={setIslogin}/>} />  
+      <Route path="/login" element={<Login isLogin={isLogin} setLoginId={setLoginId} setIslogin={setIslogin} token={token} setToken={setToken}/>} />  
       <Route path="/signup" element={<Signup/>} /> 
-      <Route path="/profile" element={<Profile loginId={loginId} isLogin={isLogin}/>} /> 
+      <Route path="/profile" element={<Profile loginId={loginId} isLogin={isLogin} setToken={setToken} token={token}/>} /> 
       <Route path="/bookings/booking-success/:id" element={<Bookingsuccess/>}/>
     </Routes>
     <Footer/>

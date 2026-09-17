@@ -13,7 +13,6 @@ export default function Bookingsuccess() {
         const getBookingdetails =async()=>{
         try{
         const res = await api.get(`/bookings/checkout/${id}`);
-        console.log(res);
         setBookId(res.data.booking.id);
         setTprice(res.data.totalPrice);
         setTourId(res.data.booking.tour.id);

@@ -26,7 +26,7 @@ exports.getAll = Model => catchAsync(async (req, res, next) => {
 exports.updateOne = Model => catchAsync(async (req, res, next) => {
     const docs = await Model.findByIdAndUpdate(req.params.id, req.body, {
         new: true,
-        ValidateBeforeSave: true
+        runValidators: true
     });
     if (!docs) {
         return next(new AppError('There is no docs on that ID', 401));
@@ -90,9 +90,13 @@ exports.wishList = Model => catchAsync(async (req, res, next) => {
 exports.getWishList = (Model, popOptions) => catchAsync(async (req, res, next) => {
       let query = Model.findById(req.params.id);
     if (popOptions) {
-        query = query.populate({ path: popOptions });
+        query = query.populate(popOptions);
     }
     const doc = await query;
+    if(!doc){
+        return next(new AppError('User not found',401));
+    }
+
     res.status(200).json({
         status: 'success',
         wishList: doc.wishList

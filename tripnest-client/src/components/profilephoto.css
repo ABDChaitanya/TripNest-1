@@ -1,0 +1,51 @@
+.profile-photo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-photo {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    position: relative;
+    overflow: visible;
+}
+
+/* .profile-photo img,
+.default-avatar {
+    width: 50%;
+    height: 50%;
+    border-radius: 50%;
+    object-fit: cover;
+} */
+
+
+.default-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #eee;
+    font-size: 45px;
+}
+
+.camera-button {
+    
+    width: 100px;
+    height: 100px;
+     
+    position: relative;
+    top: -30px;
+    left: 104px;
+    
+    border-radius: 50%;
+    background: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}

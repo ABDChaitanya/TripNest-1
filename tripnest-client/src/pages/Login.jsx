@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import api from "./../services/api.js";
-export default function Login({isLogin,setLoginId,setIslogin}) {
+export default function Login({isLogin,setLoginId,setIslogin,setToken,token}) {
     const [formData, setFormData] = useState({
         email: '',
         password: ''
@@ -10,6 +10,7 @@ export default function Login({isLogin,setLoginId,setIslogin}) {
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
     const[isValid,setIsValid] = useState(true);
     const handleChange = (e) => {
         const { id, value } = e.target;
@@ -29,11 +30,12 @@ export default function Login({isLogin,setLoginId,setIslogin}) {
         //    }))
 
         try {
-            const result = await api.post("/users/login", {
+            const result = await api.post('/users/login', {
                 email: formData.email,
                 password: formData.password
             })
             if (result.data.status === "success") {
+                setToken(result.data.token);
                 alert("Logged in successfull");
                 setLoginId(result.data.id);
                 setIslogin(true);

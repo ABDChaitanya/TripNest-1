@@ -6,6 +6,7 @@ const dotenv = require('dotenv');
 const path = require('path');
 const sendEmail = require('./../utils/email');
 const {promisify} =require('util');
+const z =require('zod');
 const crypto = require('crypto')
 dotenv.config({
     path: path.join(__dirname, './../config.env')
@@ -32,12 +33,29 @@ exports.signup = catchAsync(async (req, res, next) => {
     if (!req.body.email || !req.body.password) {
         return next(new AppError('Please provide both email and password', 400));
     }
-
-    const user = await User.create({
+    const UserChecking  =z.object({
+        name:z.string(),
+        email:z.email(),
+        password:z.string().min(8),
+        role:z.enum(['user', 'admin', 'lead-guide','guide'])
+    }) 
+    let data;
+    try{
+     data = UserChecking.parse({
         name: req.body.name,
         email: req.body.email,
         password: req.body.password,
         role: req.body.role
+    });
+    } catch(err){
+        return next(new AppError("Please fill appropriate only",400));
+    }
+    console.log(data);
+    const user = await User.create({
+        name: data.name,
+        email: data.email,
+        password: data.password,
+        role: data.role
     })
     await user.save();
 
@@ -63,6 +81,13 @@ exports.login = catchAsync(async (req, res, next) => {
     }
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
         expiresIn: process.env.JWT_EXPIRES_IN
+    })
+    res.cookie('token',token,{
+        httpOnly:true,
+        maxAge:10*60*1000,
+        secure:false,
+        sameSite:'lax',
+        path:'/'
     })
     res.status(200).json({
         status: 'success',

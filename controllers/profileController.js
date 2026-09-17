@@ -4,12 +4,11 @@ const Booking = require('./../models/bookingModel');
 const mongoose = require('mongoose');
 exports.profile_stats = async(req,res)=>{
     const id = String(req.params.id);
-    console.log(id);
     const reviews = await Review.countDocuments({
-        user:req.params.id
+        user:new mongoose.Types.ObjectId(req.params.id)
     });
     const tours = await Booking.countDocuments({
-        user:id
+        user:new mongoose.Types.ObjectId(req.params.id)
     });
     const allReviews = await Review.find({
         user:new mongoose.Types.ObjectId(req.params.id)

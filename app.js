@@ -1,5 +1,7 @@
 const express  = require('express');
+const helmet = require('helmet');
 const dotenv = require('dotenv');
+const rateLimit = require('express-rate-limit');
 const path = require('path');
 dotenv.config({
     path: path.join(__dirname, './config.env')
@@ -9,19 +11,33 @@ const profileRouter = require('./routes/profileRouter');
 const userRouter = require('./routes/userRouter');
 const reviewRouter = require('./routes/reviewRouter');
 const bookingRouter = require('./routes/bookingRouter');
+const multer = require('multer');
 const bookingController = require('./controllers/bookingController');
 const cors = require("cors");
 const mongoose = require('mongoose')
 const app = express();
 const port = 3002;
+// const upload = multer({dest:})
+app.use(helmet());
 app.post(
     '/api/v1/webhooks/stripe',
     express.raw({ type: 'application/json' }),
     bookingController.stripeWebhook
 );
 
-app.use(express.json());
-app.use(cors());
+app.use(express.json({limit:'500kb'}));
+const limiter = rateLimit({
+  windowMs:15*60*1000,
+  limit:100,
+  standardHeaders:'draft-8',
+  legacyHeaders:false,
+  ipv6Subnet:56
+})
+app.use(limiter);
+app.use(cors({
+  origin:"http://localhost:5173",
+  credentials:true
+}));
 app.set("query parser","extended");
 app.use('/api/v1/profile',profileRouter);
 app.use('/api/v1/tours',tourRouter);
