@@ -1384,3 +1384,284 @@ h2 {
   align-items: center;
   top:100px;
 }
+
+/* =========================================
+   TRIPNEST - MODERN HERO SECTION
+========================================= */
+
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 620px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 140px 24px 80px;
+  box-sizing: border-box;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(8, 25, 45, 0.45) 0%,
+      rgba(8, 25, 45, 0.65) 100%
+    ),
+    url("./assets/hero.png") center 50% / cover no-repeat;
+}
+
+.hero-content {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+  color: #ffffff;
+}
+
+.hero-eyebrow {
+  display: inline-block;
+  margin-bottom: 22px;
+  color: #c9e7ff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.hero-title {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(42px, 6vw, 82px);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -2px;
+  color: #ffffff;
+  text-wrap: balance;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+}
+
+.hero-title span {
+  color: #a9d8ff;
+}
+
+.hero-subtitle {
+  max-width: 650px;
+  margin: 24px auto 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: clamp(16px, 2vw, 20px);
+  line-height: 1.8;
+}
+
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 36px;
+}
+
+.hero-primary-btn,
+.hero-secondary-btn {
+  min-width: 165px;
+  min-height: 52px;
+  padding: 0 26px;
+  box-sizing: border-box;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  border-radius: 999px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.hero-primary-btn {
+  color: #ffffff;
+  background: #3978e8;
+  box-shadow: 0 8px 24px rgba(25, 85, 190, 0.25);
+}
+
+.hero-primary-btn:hover {
+  background: #2563d9;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(25, 85, 190, 0.35);
+}
+
+.hero-secondary-btn {
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+}
+
+.hero-secondary-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateY(-3px);
+}
+
+.hero-trust {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px 28px;
+  margin-top: 42px;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 13px;
+}
+
+.hero-trust span {
+  white-space: nowrap;
+}
+
+/* Keyboard accessibility */
+
+.hero-primary-btn:focus-visible,
+.hero-secondary-btn:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 4px;
+}
+
+/* Tablet */
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: 560px;
+    padding: 120px 22px 65px;
+    background-position: center;
+  }
+
+  .hero-title {
+    letter-spacing: -1px;
+  }
+
+  .hero-subtitle {
+    line-height: 1.6;
+  }
+
+  .hero-trust {
+    gap: 12px 18px;
+    margin-top: 32px;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 480px) {
+  .hero {
+    min-height: 520px;
+    padding: 110px 18px 55px;
+  }
+
+  .hero-eyebrow {
+    font-size: 10px;
+    letter-spacing: 2px;
+  }
+
+  .hero-title {
+    font-size: clamp(38px, 11vw, 50px);
+  }
+
+  .desktop-break {
+    display: none;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 28px;
+  }
+
+  .hero-primary-btn,
+  .hero-secondary-btn {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .hero-trust {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+  }
+}
+.Homemain {
+  background-image:
+    linear-gradient(
+      rgba(12, 28, 45, 0.55),
+      rgba(12, 28, 45, 0.65)
+    ),
+    url("./assets/hero.png");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  min-height: 100vh;
+  padding: 0 24px 60px;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+.feauteredTours {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+
+  width: 100%;
+  max-width: 1100px;
+  padding: 0;
+  margin: 0 auto;
+
+  box-sizing: border-box;
+}
+.tourCard a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  min-width: 120px;
+  min-height: 44px;
+  padding: 10px 18px;
+
+  box-sizing: border-box;
+  white-space: nowrap;
+
+  background: #2563eb;
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+
+  border-radius: 10px;
+  font-weight: 600;
+
+  transition: background 0.2s ease;
+}
+
+.tourCard a:hover {
+  background: #1d4ed8;
+}
+@media (max-width: 768px) {
+  .Homemain {
+    padding: 0 16px 40px;
+    gap: 24px;
+  }
+
+  .feauteredTours {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+}
+
+@media (max-width: 520px) {
+  .feauteredTours {
+    grid-template-columns: 1fr;
+  }
+}

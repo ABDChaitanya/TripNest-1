@@ -1,0 +1,149 @@
+/* 
+.Services{
+    display:flex;
+    justify-content:space-between;
+    width:500px;
+    height:50px;
+    margin-bottom:30px;
+}
+.Services button{
+    height:50px;
+    width:100px;
+    border-radius:20px;
+
+}
+.BookingFlight{
+    width:900px;
+    height:150px;
+    display:flex;
+    gap:20px;
+}
+.submit{
+    height:10px;
+} */
+ /* ==========================================================================
+   Services Navigation Bar Styles
+   ========================================================================== */
+.Services {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 10px;
+
+}
+
+.Services button {
+  padding: 10px 16px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+}
+
+.Services button:hover {
+  background-color: #e0e0e0;
+}
+
+/* ==========================================================================
+   Flight Booking Form Container
+   ========================================================================== */
+.BookingFlight {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  margin-bottom:30px;
+}
+
+/* ==========================================================================
+   Side-by-Side Flex Layout
+   ========================================================================== */
+.totalflight {
+  display: flex;
+  gap: 32px;            /* Creates the separation between left & right columns */
+  margin-bottom: 24px;   /* Spacing between inputs and the submit button */
+}
+
+/* Forces both columns to stay equal width */
+.flightleft, 
+.flightright {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;            /* Spacing between vertical inputs within a column */
+}
+
+/* Helper block formatting for consistent label alignment */
+.flightleft div,
+.flightright div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333333;
+}
+
+/* ==========================================================================
+   Form Component Element Overrides
+   ========================================================================== */
+.BookingFlight input[type="text"],
+.BookingFlight input[type="number"],
+.BookingFlight select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box; /* Ensures padding doesn't affect width calculations */
+  outline: none;
+}
+
+.BookingFlight input:focus,
+.BookingFlight select:focus {
+  border-color: #007bff;
+}
+
+/* ==========================================================================
+   Bottom Form Row (Submit Action Area)
+   ========================================================================== */
+.flightbottom {
+  display: flex;
+  justify-content: center; /* Horizontally centers the button under the panels */
+  border-top: 1px solid #f0f0f0;
+  padding-top: 20px;
+}
+
+.submit {
+  padding: 12px 36px;
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.submit:hover {
+  background-color: #0056b3;
+}
+
+.BookingFlight input[type="text"],
+.BookingFlight input[type="number"],
+.BookingFlight input[type="date"], 
+.BookingFlight select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+  outline: none;
+  font-family: inherit; /* Keeps standard text styling inside date field calendars */
+}

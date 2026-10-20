@@ -10,6 +10,7 @@ import Profile from './pages/Profile'
 import Footer  from './../footer'
 import Bookingsuccess from './components/Bookingsuccess'
 import './App.css'
+import './site-ui.css'
 function App() {
 const[isLogin,setIslogin] = useState(false);
 const[loginId,setLoginId] = useState("");

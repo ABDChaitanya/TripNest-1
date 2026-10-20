@@ -1,12 +1,15 @@
 import Tourcard from "./Tourcard"
 import {Link} from "react-router-dom"
 import tour from "../../../dev-data/img/new-tour-1.jpg"
+import bike from "../assets/new-tour-3.png"
+import waterfall from "../assets/ooty.png"
+import mountainLake from "../assets/tourPage.png"
 function Featuredtours(){
     return(
         <>
         <div className="feauteredTours">
         <Tourcard 
-            image={tour}
+            image={bike}
             rating="4.8"
             title="The playing Knight"
             location="17.22323.24432"
@@ -24,7 +27,7 @@ function Featuredtours(){
             price="30000"
             />      
         <Tourcard 
-            image={tour}
+            image={waterfall}
             rating="4.5"
             title="Night way to heaven"
             location="832.342.123"
@@ -33,7 +36,7 @@ function Featuredtours(){
             price="20000"
             />  
         <Tourcard 
-            image={tour}
+            image={mountainLake}
             rating="4.3"
             title="Devotion tour"
             location="213.432.532"
@@ -51,7 +54,7 @@ function Featuredtours(){
             price="25000"
             />
         <Tourcard 
-            image={tour}
+            image={bike}
             rating="4.8"
             title="The playing Knight"
             location="17.22323.24432"

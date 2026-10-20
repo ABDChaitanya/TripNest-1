@@ -11,6 +11,7 @@ const profileRouter = require('./routes/profileRouter');
 const userRouter = require('./routes/userRouter');
 const reviewRouter = require('./routes/reviewRouter');
 const bookingRouter = require('./routes/bookingRouter');
+const flightRouter = require('./routes/flightRouter');
 const multer = require('multer');
 const bookingController = require('./controllers/bookingController');
 const cors = require("cors");
@@ -40,6 +41,7 @@ app.use(cors({
   credentials:true
 }));
 app.set("query parser","extended");
+app.use('/api/v1/flights',flightRouter);
 app.use('/api/v1/profile',profileRouter);
 app.use('/api/v1/tours',tourRouter);
 app.use('/api/v1/users',userRouter);

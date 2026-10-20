@@ -1,0 +1,391 @@
+﻿/* Shared TripNest visual system for routes and reusable booking components. */
+:root {
+  --site-ink: #17213c;
+  --site-muted: #77716b;
+  --site-green: #267455;
+  --site-green-dark: #195b40;
+  --site-line: #dfe9e1;
+  --site-canvas: #f6f9f6;
+  --site-card-shadow: 0 12px 32px rgba(71, 42, 20, .09);
+}
+
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--site-canvas); color: var(--site-ink); font-family: Inter, "Segoe UI", Arial, sans-serif; }
+button, input, select, textarea { font: inherit; }
+button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
+:focus-visible { outline: 3px solid #68ad8c; outline-offset: 3px; }
+
+.footer { justify-content: center; padding: 24px; border-top: 1px solid var(--site-line); background: #fff; color: var(--site-muted); font-size: 13px; }
+.footer p { margin: 0; }
+
+/* Account screens */
+.loginpage, .singuppage {
+  min-height: calc(100vh - 72px);
+  margin: 0;
+  padding: 122px 20px 72px;
+  box-sizing: border-box;
+  background: radial-gradient(ellipse at 16% 20%, rgba(184, 220, 197, .35), transparent 35%), var(--site-canvas);
+}
+.loginpage { height: auto; }
+.login-container, .signup-container {
+  width: min(100%, 460px);
+  max-width: 460px;
+  height: auto;
+  margin: auto;
+  padding: 42px;
+  box-sizing: border-box;
+  border: 1px solid var(--site-line);
+  border-radius: 24px;
+  background: #fff;
+  box-shadow: var(--site-card-shadow);
+}
+.login-container { background: #fff; }
+.login-container > h2, .signup-container > h2 { margin: 0 0 32px; color: var(--site-ink); font-size: 30px; letter-spacing: -1px; }
+.login-container .input-group1, .signup-container .input-group1 { margin-bottom: 20px; }
+.login-container .input-group1 input, .signup-container .input-group1 input {
+  min-height: 50px;
+  padding: 12px 14px;
+  border: 1px solid var(--site-line);
+  border-radius: 11px;
+  background: #fbfcfb;
+  color: var(--site-ink);
+  box-sizing: border-box;
+}
+.login-container .input-group1 label, .signup-container .input-group1 label {
+  top: 16px;
+  left: 14px;
+  color: #74837c;
+  text-decoration: none;
+  background: transparent;
+}
+.login-container .input-group1 input:focus, .signup-container .input-group1 input:focus { border-color: #70a987; background: #fff; box-shadow: 0 0 0 3px rgba(108, 162, 135, .14); }
+.login-container .input-group1 input:focus ~ label, .login-container .input-group1 input.has-text ~ label,
+.signup-container .input-group1 input:focus ~ label, .signup-container .input-group1 input.has-text ~ label { top: -8px; left: 10px; padding: 0 5px; color: var(--site-green); background: #fff; transform: none; font-size: 11px; }
+.login-container .login-btn, .signup-container .signup-btn { min-height: 50px; margin-top: 6px; border-radius: 11px; background: var(--site-green); color: #fff; }
+.login-container .login-btn:hover, .signup-container .signup-btn:hover { background: var(--site-green-dark); }
+.login-container .signupinlogin, .signup-container .logininsignup { margin-top: 30px; padding-top: 22px; border-top: 1px solid var(--site-line); }
+.login-container .signupinlogin h2, .signup-container .logininsignup h2 { margin: 0 0 14px; color: var(--site-muted); font-size: 14px; font-weight: 500; }
+.login-container .signdiv, .signup-container .logindiv { width: 100%; height: auto; padding: 12px; border: 1px solid #cbd9d1; border-radius: 11px; background: #fff; box-sizing: border-box; }
+.login-container .signupinloginbutton, .signup-container .logininsignupbutton { width: 100%; color: var(--site-green); font-size: 15px; font-weight: 700; }
+.login-container form > h2 { margin: 14px 0 0; color: #b0443c; font-size: 14px; }
+
+/* Profile */
+.profilenavbar { display: none; }
+.mainprofile {
+  display: grid;
+  grid-template-columns: 230px minmax(0, 1fr);
+  gap: 30px;
+  width: min(1160px, calc(100% - 48px));
+  min-height: calc(100vh - 160px);
+  margin: 0 auto;
+  padding: 132px 0 80px;
+  box-sizing: border-box;
+}
+.left-side-profile {
+  position: sticky;
+  top: 96px;
+  align-self: start;
+  width: auto;
+  height: auto;
+  padding: 12px;
+  gap: 6px;
+  border: 1px solid var(--site-line);
+  border-radius: 18px;
+  background: #fff;
+}
+.left-side-profile div {
+  width: 100%;
+  max-width: none;
+  height: auto;
+  min-height: 46px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 11px;
+  background: #fff;
+  box-shadow: none;
+  color: var(--site-muted);
+  font-size: 14px;
+  transition: background .2s ease, color .2s ease;
+}
+.left-side-profile div:hover { background: #edf4ef; color: var(--site-green); font-size: 14px; }
+.left-side-profile div button { width: 100%; height: 46px; border: 0; border-radius: inherit; background: transparent; color: inherit; font-weight: 700; cursor: pointer; transition: background .2s ease, color .2s ease; }
+.right-side-profile { align-items: stretch; width: auto; height: auto; min-width: 0; }
+.profilepic { width: 108px; height: 108px; margin: 8px auto 0; border: 5px solid #fff; background: #dfece3; box-shadow: 0 8px 24px rgba(25, 51, 44, .13); }
+.profile-overview { display: flex; width: 100%; flex-direction: column; align-items: center; padding: 32px; border: 1px solid var(--site-line); border-radius: 22px; background: linear-gradient(180deg, #fff 0%, #fbfcfb 100%); box-shadow: 0 10px 30px rgba(25, 51, 44, .055); box-sizing: border-box; }
+.profile-overview .profilepic { margin: 0 auto; }
+.profile-summary-heading { margin: 18px 0 0; text-align: center; }
+.profile-summary-heading h1 { margin: 0; color: var(--site-ink); font-size: 25px; letter-spacing: -.7px; }
+.profile-summary-heading p { margin: 7px 0 0; color: var(--site-muted); font-size: 14px; line-height: 1.5; }
+.profileinfo { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; width: 100%; margin-top: 34px; }
+.profileinfo > div { position: relative; display: flex; width: auto; min-width: 0; min-height: 158px; flex-direction: column; align-items: flex-start; justify-content: center; gap: 7px; padding: 20px; border: 1px solid var(--site-line); border-radius: 17px; background: #fff; box-shadow: 0 5px 18px rgba(25, 51, 44, .045); color: var(--site-muted); box-sizing: border-box; }
+.profile-stat-icon { display: grid; width: 34px; height: 34px; place-items: center; margin-bottom: 3px; border-radius: 11px; background: #edf4ef; color: var(--site-green); font-size: 17px; font-weight: 800; }
+.profile-stat-label { color: var(--site-muted); font-size: 11px; font-weight: 800; letter-spacing: .7px; }
+.profile-stat-value { color: var(--site-ink); font-size: clamp(24px, 3vw, 34px); line-height: 1.1; font-weight: 750; }
+.profilebookings, .profileReviews { display: flex; width: 100%; flex-direction: column; align-items: stretch; gap: 14px; }
+.profilebookings .booking-card1, .profileReviews .review-card1 { width: 100%; height: auto; margin: 0; box-sizing: border-box; border-color: var(--site-line); border-radius: 16px; box-shadow: 0 8px 24px rgba(25, 51, 44, .05); }
+.left-side-profile div button[aria-pressed="true"] { background: var(--site-green); color: #fff; box-shadow: 0 4px 12px rgba(23, 107, 87, .2); }
+.left-side-profile div button[aria-pressed="true"]:hover { background: var(--site-green-dark); color: #fff; }
+.profile-state { width: 100%; margin: 18px 0; padding: 36px 22px; border: 1px dashed #cbd9d1; border-radius: 16px; background: #fff; color: var(--site-muted); text-align: center; box-sizing: border-box; }
+.profile-state h2 { margin: 0 0 8px; color: var(--site-ink); font-size: 20px; }
+.profile-state p { margin: 0; }
+
+/* Shared tour card structure */
+.tourCard { display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--site-line); border-radius: 18px; background: #fff; box-shadow: 0 8px 26px rgba(25, 51, 44, .07); transition: transform .24s ease, box-shadow .24s ease; }
+.tourCard:hover { transform: translateY(-5px); box-shadow: 0 18px 38px rgba(25, 51, 44, .13); }
+.tour-card-image-wrap { position: relative; height: 205px; overflow: hidden; background: #e7eee9; }
+.tourCard .tourimage { display: block; width: 100%; height: 100%; padding: 0; border-radius: 0; object-fit: cover; transition: transform .45s ease; }
+.tourCard:hover .tourimage { transform: scale(1.035); }
+.tourCard .ratings { top: 14px; right: 14px; padding: 7px 11px; border: 1px solid rgba(255,255,255,.7); border-radius: 999px; background: rgba(255,255,255,.95); color: var(--site-ink); font-size: 13px; box-shadow: 0 3px 12px rgba(20,35,30,.1); }
+.tourCard .ratings span { color: #d39131; }
+.tour-card-content { display: flex; flex: 1; flex-direction: column; align-items: stretch; padding: 4px 20px 18px; }
+.tour-card-content .TourName { margin: 14px 0 6px; color: var(--site-ink); font-size: 19px; line-height: 1.35; letter-spacing: -.3px; }
+.tour-card-content .TourName { text-align: left; }
+.tour-card-content .location { margin: 0; color: var(--site-muted); font-size: 13px; }
+.tour-card-content .location span { color: var(--site-green); }
+.tour-card-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin-top: 16px; }
+.tour-card-content .duration, .tour-card-content .people { display: inline-flex; align-items: center; gap: 5px; margin: 0; padding: 0; color: #63736e; font-size: 12px; }
+.tour-card-content .duration span, .tour-card-content .people span { color: var(--site-green); }
+.tour-card-content .difficulty { margin: 0; padding: 4px 9px; border-radius: 999px; background: #edf4ef; color: var(--site-green); font-size: 11px; font-weight: 700; }
+.tour-card-bottom { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: auto; padding-top: 16px; }
+.tour-card-content .price { display: flex; flex-direction: column; gap: 1px; margin: 0; color: var(--site-green); font-size: 20px; font-weight: 800; }
+.tour-card-content .price span { color: var(--site-muted); font-size: 11px; font-weight: 500; }
+.tour-card-content a { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 42px; margin: 0; padding: 0 15px; border-radius: 10px; background: var(--site-green); color: #fff; font-size: 13px; font-weight: 700; text-decoration: none; transition: background .2s ease, transform .2s ease; }
+.tour-card-content a:hover { transform: translateY(-1px); background: var(--site-green-dark); }
+.Homemain .tour-card-content a, .tours-page-redesign .tour-card-content a { margin: 0; }
+
+/* Tour details and checkout */
+.tour-page-wrapper { background: var(--site-canvas); color: var(--site-ink); }
+.tour-page-wrapper .tour-hero-banner { min-height: 500px; }
+.tour-page-wrapper .tour-category-badge { background: var(--site-green); }
+.tour-page-wrapper .tour-main-layout { grid-template-columns: minmax(0, 1.4fr) minmax(310px, .8fr); gap: 28px; align-items: start; }
+.tour-page-wrapper .tour-left-column, .tour-page-wrapper .tour-right-column { gap: 22px; min-width: 0; }
+.tour-page-wrapper .content-block, .tour-page-wrapper .sticky-booking-card, .tour-page-wrapper .review-card-container, .tour-page-wrapper .checkout-card { border: 1px solid var(--site-line); border-radius: 18px; box-shadow: 0 8px 24px rgba(25, 51, 44, .055); }
+.tour-page-wrapper .section-title { border-color: var(--site-line); color: var(--site-ink); }
+.tour-page-wrapper .price-amount { color: var(--site-green); }
+.tour-page-wrapper .submit-booking-btn, .tour-page-wrapper .review-submit-action { border-radius: 11px; background: var(--site-green); }
+.tour-page-wrapper .submit-booking-btn:hover, .tour-page-wrapper .review-submit-action:hover { background: var(--site-green-dark); }
+.tour-page-wrapper .checkoutform-class { min-height: 0; background: transparent; }
+.tour-page-wrapper .checkout-card { max-width: none; padding: 26px; }
+.tour-page-wrapper .checkoutform-class form { max-width: none; padding: 0; box-shadow: none; }
+.tour-page-wrapper .checkoutform-class button { border-radius: 11px; background: var(--site-green); }
+.tour-page-wrapper .review-field-input, .tour-page-wrapper .review-field-textarea { width: 100%; box-sizing: border-box; border: 1px solid var(--site-line); border-radius: 10px; background: #fbfcfb; }
+.tour-page-wrapper .review-field-input:focus, .tour-page-wrapper .review-field-textarea:focus { outline: none; border-color: #70a987; box-shadow: 0 0 0 3px rgba(108, 162, 135, .14); }
+.tour-page-wrapper > .testimonials { width: min(1160px, calc(100% - 48px)); margin: 0 auto 70px; }
+
+/* Confirmation */
+.bookingsuccess { min-height: calc(100vh - 72px); background: radial-gradient(ellipse at 50% 25%, rgba(184, 220, 197, .35), transparent 36%), var(--site-canvas); }
+.bookingsuccess > div { border: 1px solid var(--site-line); border-radius: 22px; box-shadow: var(--site-card-shadow); }
+.bookingsuccess button { background: var(--site-green); }
+.bookingsuccess button:hover { background: var(--site-green-dark); }
+.bookingsuccess .goingbackpayment { color: var(--site-green); background: #edf4ef; }
+.bookingsuccess .goingbackpayment:hover { color: #fff; background: var(--site-green-dark); }
+
+@media (max-width: 800px) {
+  .loginpage, .singuppage { padding-top: 184px; }
+  .mainprofile { grid-template-columns: 1fr; gap: 18px; width: min(100% - 32px, 640px); padding: 184px 0 56px; }
+  .left-side-profile { position: static; flex-direction: row; justify-content: stretch; }
+  .left-side-profile > div { flex: 1; }
+  .profileinfo { gap: 10px; }
+  .profileinfo > div { min-height: 120px; padding: 14px; }
+  .profile-overview { padding: 24px 18px; }
+  .tour-page-wrapper .tour-main-layout { grid-template-columns: 1fr; }
+  .tour-page-wrapper .sticky-booking-card { position: static; }
+}
+@media (max-width: 600px) {
+  .loginpage, .singuppage { min-height: calc(100vh - 72px); padding: 192px 16px 48px; }
+  .login-container, .signup-container { padding: 30px 22px; border-radius: 18px; }
+  .profileinfo { grid-template-columns: 1fr; }
+  .profileinfo > div { min-height: 112px; }
+  .left-side-profile { padding: 7px; }
+  .left-side-profile div button { font-size: 12px; }
+  .tour-card-image-wrap { height: 190px; }
+  .tour-card-content { padding-right: 16px; padding-left: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}
+
+/* Warm ivory, sunset orange, and deep navy visual theme. */
+body { background: #f6f9f6; color: #17213c; }
+:focus-visible { outline-color: #70a987; }
+.home-section-heading h2, .tours-page-redesign .toursheading, .tours-page-redesign .tours-results-heading h2,
+.tour-card-content .TourName, .tour-page-wrapper .tour-main-title, .tour-page-wrapper .section-title,
+.profile-summary-heading h1, .login-container > h2, .signup-container > h2 {
+  font-family: Georgia, "Times New Roman", serif;
+}
+.footer { border-color: #dfe9e1; background: #edf4ee; color: #71665d; }
+.loginpage, .singuppage { background: radial-gradient(ellipse at 16% 20%, rgba(255, 217, 175, .38), transparent 36%), #f6f9f6; }
+.login-container, .signup-container { border-color: #dfe9e1; box-shadow: 0 16px 42px rgba(80, 48, 22, .1); }
+.login-container .input-group1 input, .signup-container .input-group1 input { border-color: #dfe9e1; background: #fbfdfb; }
+.login-container .input-group1 input:focus, .signup-container .input-group1 input:focus { border-color: #70a987; box-shadow: 0 0 0 3px rgba(228, 132, 66, .17); }
+.login-container .input-group1 input:focus ~ label, .login-container .input-group1 input.has-text ~ label,
+.signup-container .input-group1 input:focus ~ label, .signup-container .input-group1 input.has-text ~ label { color: #267455; }
+.login-container .login-btn, .signup-container .signup-btn { background: #267455; }
+.login-container .login-btn:hover, .signup-container .signup-btn:hover { background: #195b40; }
+.login-container .signdiv, .signup-container .logindiv { border-color: #edb080; background: #f8fcf8; }
+.login-container .signupinloginbutton, .signup-container .logininsignupbutton { color: #267455; }
+
+.tours-page-redesign { background: #f6f9f6; }
+.tours-page-redesign .input-field:focus { border-color: #70a987; box-shadow: 0 0 0 3px rgba(228, 132, 66, .16); }
+.tours-page-redesign .searchbutton1, .tours-page-redesign .sortfilter > button { background: #267455; }
+.tours-page-redesign .searchbutton1:hover, .tours-page-redesign .sortfilter > button:hover { background: #195b40; }
+.tours-page-redesign .filtering { box-shadow: 0 18px 48px rgba(77, 44, 20, .17); }
+.tours-page-redesign .ratingfilter input { accent-color: #267455; }
+.tours-page-redesign :focus-visible { outline-color: #70a987; }
+.tours-page-redesign .tours-empty-state > span { background: #e8f2eb; color: #267455; }
+.tours-page-redesign .tour-card-content a { border-color: #6da887; background: #fff; color: #236a4d; }
+.tours-page-redesign .tour-card-content a:hover { background: #e8f2eb; }
+
+.Homemain { --home-ink: #17213c; --home-muted: #746d67; --home-green: #267455; --home-line: #dfe9e1; background: #f6f9f6; }
+.Homemain .hero-eyebrow { color: #fff4e8; }
+.Homemain .hero-eyebrow::before { content: ""; display: inline-block; width: 38px; height: 1px; margin: 0 12px 4px 0; background: #78b48e; }
+.Homemain .hero-title { font-size: clamp(48px, 5.3vw, 76px); line-height: 1.04; letter-spacing: -1.8px; }
+.Homemain .hero-subtitle { font-family: Georgia, "Times New Roman", serif; font-size: clamp(16px, 1.45vw, 20px); line-height: 1.55; }
+.Homemain .hero-primary-btn { background: #267455; }
+.Homemain .hero-primary-btn:hover { background: #195b40; }
+.Homemain .hero-secondary-btn { border-color: rgba(255,255,255,.85); background: rgba(20, 25, 45, .23); }
+.Homemain .hero-trust { gap: 12px 30px; color: rgba(255,255,255,.96); }
+.home-section-heading h2 { color: #17213c; }
+.home-kicker { color: #267455; }
+.home-service-panel { border-color: #eee1d5; background: rgba(255,255,255,.56); }
+.home-service-panel .Services button { color: #55473d; }
+.home-service-panel .Services button:hover, .home-service-panel .Flights button { background: #e8f2eb; color: #267455; }
+.home-service-panel .BookingFlight { border-color: #dfe9e1; }
+.home-service-panel .Services button { border-color: transparent; }
+.home-service-panel .BookingFlight label { color: #51463f; }
+.home-service-panel .submit { background: #267455; }
+.home-service-panel .BookingFlight input:focus, .home-service-panel .BookingFlight select:focus { border-color: #70a987; box-shadow: 0 0 0 3px rgba(228, 132, 66, .16); }
+.home-service-panel .submit { background: #267455; }
+.Homemain .box1, .Homemain .entervalue { border-color: #dfe9e1; background: rgba(255,255,255,.78); color: #736b64; }
+.Homemain .entervalue:focus { border-color: #70a987; outline-color: rgba(228, 132, 66, .2); }
+.Homemain .tour-card-content a { border-color: #6da887; background: #fff; color: #236a4d; }
+.Homemain .tour-card-content a:hover { background: #e8f2eb; }
+.Homemain .feauteredTours + a { border-color: #6da887; color: #236a4d; }
+.Homemain .feauteredTours + a:hover { background: #e8f2eb; }
+.Homemain .testicard { border-color: #dfe9e1; background: #ffffff; }
+.Homemain :focus-visible { outline-color: #70a987; }
+
+.mainprofile { color: #17213c; }
+.left-side-profile { border-color: #dfe9e1; background: #ffffff; }
+.left-side-profile div { background: transparent; color: #746d67; }
+.left-side-profile div:hover, .left-side-profile div button[aria-pressed="true"] { background: #267455; color: #fff; }
+.left-side-profile div button[aria-pressed="true"]:hover { background: #195b40; color: #fff; }
+.profile-overview { border-color: #dfe9e1; background: linear-gradient(180deg, #ffffff 0%, #f1f7f2 100%); }
+.profilepic { background: #f6e4d1; }
+.profile-stat-icon { background: #e8f2eb; color: #267455; }
+.profileinfo > div { border-color: #dfe9e1; background: #ffffff; }
+.profile-stat-value, .profile-summary-heading h1 { color: #17213c; }
+.profile-state { border-color: #c8dbce; background: #ffffff; }
+
+.tour-page-wrapper { background: #f6f9f6; color: #17213c; }
+.tour-page-wrapper .tour-category-badge { background: #267455; }
+.tour-page-wrapper .content-block, .tour-page-wrapper .sticky-booking-card, .tour-page-wrapper .review-card-container, .tour-page-wrapper .checkout-card { border-color: #dfe9e1; background-color: #ffffff; }
+.tour-page-wrapper .section-title { color: #17213c; }
+.tour-page-wrapper .form-input-field:focus, .tour-page-wrapper .review-field-input:focus, .tour-page-wrapper .review-field-textarea:focus { border-color: #70a987; box-shadow: 0 0 0 3px rgba(228, 132, 66, .16); }
+.tour-page-wrapper .submit-booking-btn, .tour-page-wrapper .review-submit-action, .tour-page-wrapper .checkoutform-class button { background: #267455; }
+.tour-page-wrapper .submit-booking-btn:hover, .tour-page-wrapper .review-submit-action:hover, .tour-page-wrapper .checkoutform-class button:hover { background: #195b40; }
+.tour-page-wrapper .review-card-container, .tour-page-wrapper .checkout-card { box-shadow: 0 12px 32px rgba(71, 42, 20, .08); }
+.tour-page-wrapper .testicard { border-color: #dfe9e1; background: #ffffff; }
+.bookingsuccess { background: radial-gradient(ellipse at 50% 25%, rgba(255, 217, 175, .4), transparent 36%), #f6f9f6; }
+.bookingsuccess > div { border-color: #dfe9e1; background: #ffffff; }
+.bookingsuccess button { background: #267455; }
+.bookingsuccess button:hover { background: #195b40; }
+.bookingsuccess .goingbackpayment { background: #e8f2eb; color: #267455; }
+.bookingsuccess .goingbackpayment:hover { background: #195b40; color: #fff; }
+
+@media (max-width: 520px) {
+  .Homemain .hero { min-height: 560px; background-position: 57% center; }
+  .Homemain .hero-title { font-size: clamp(43px, 11vw, 58px); }
+  .home-content { width: calc(100% - 32px); }
+  .home-featured-header { gap: 12px; }
+  .home-service-panel { align-self: stretch; }
+  .home-service-panel .Services { justify-content: space-between; }
+  .home-service-panel .Services button { padding: 9px 12px; font-size: 13px; }
+  .Homemain .search { gap: 8px; }
+  .Homemain .box1 { min-width: 0; min-height: 46px; padding: 0 10px; font-size: 12px; }
+  .Homemain .entervalue { min-height: 46px; }
+}
+
+/* Green TripNest palette: fresh greens with soft botanical neutrals. */
+:root {
+  --site-ink: #19352a;
+  --site-muted: #68766e;
+  --site-green: #267455;
+  --site-green-dark: #195b40;
+  --site-line: #dfe9e1;
+  --site-canvas: #f6f9f6;
+  --site-card-shadow: 0 12px 32px rgba(31, 76, 53, .08);
+}
+body { background: #f6f9f6; color: #19352a; }
+:focus-visible { outline-color: #55a177; }
+.footer { border-color: #dfe9e1; background: #edf4ee; color: #68766e; }
+.loginpage, .singuppage { background: radial-gradient(ellipse at 16% 20%, rgba(188, 220, 194, .34), transparent 36%), #f6f9f6; }
+.login-container, .signup-container { border-color: #dfe9e1; box-shadow: 0 16px 42px rgba(31, 76, 53, .09); }
+.login-container .input-group1 input, .signup-container .input-group1 input { border-color: #dfe9e1; background: #fbfdfb; }
+.login-container .input-group1 input:focus, .signup-container .input-group1 input:focus { border-color: #70a987; box-shadow: 0 0 0 3px rgba(85, 161, 119, .16); }
+.signup-container .input-group1 input:focus ~ label, .signup-container .input-group1 input.has-text ~ label,
+.login-container .input-group1 input:focus ~ label, .login-container .input-group1 input.has-text ~ label { color: #267455; }
+.login-container .login-btn, .signup-container .signup-btn { background: #267455; }
+.login-container .login-btn:hover, .signup-container .signup-btn:hover { background: #195b40; }
+.login-container .signdiv, .signup-container .logindiv { border-color: #bdd4c3; background: #f8fcf8; }
+.login-container .signupinloginbutton, .signup-container .logininsignupbutton { color: #267455; }
+
+.tours-page-redesign { --tour-ink: #19352a; --tour-muted: #68766e; --tour-green: #267455; --tour-border: #dfe9e1; background: #f6f9f6; color: #19352a; }
+.tours-page-redesign .input-field:focus { border-color: #70a987; box-shadow: 0 0 0 3px rgba(85, 161, 119, .16); }
+.tours-page-redesign .searchbutton1, .tours-page-redesign .sortfilter > button { background: #267455; }
+.tours-page-redesign .searchbutton1:hover, .tours-page-redesign .sortfilter > button:hover { background: #195b40; }
+.tours-page-redesign .ratingfilter input { accent-color: #267455; }
+.tours-page-redesign :focus-visible { outline-color: #55a177; }
+.tours-page-redesign .tours-empty-state > span { background: #e7f1e9; color: #267455; }
+.tours-page-redesign .tour-card-content a { border-color: #6da887; color: #236a4d; }
+.tours-page-redesign .tour-card-content a:hover { background: #eaf3ec; }
+
+.Homemain { --home-ink: #19352a; --home-muted: #68766e; --home-green: #267455; --home-line: #dfe9e1; background: #f6f9f6; }
+.Homemain .hero-eyebrow::before { background: #78b48e; }
+.Homemain .hero-title span { color: #b9dfc1; }
+.Homemain .hero-primary-btn { background: #267455; }
+.Homemain .hero-primary-btn:hover { background: #195b40; }
+.Homemain .hero-secondary-btn { background: rgba(17, 44, 31, .25); }
+.home-kicker { color: #267455; }
+.home-service-panel { border-color: #dfe9e1; }
+.home-service-panel .Services button:hover, .home-service-panel .Flights button { background: #e8f2eb; color: #236a4d; }
+.home-service-panel .BookingFlight { border-color: #dfe9e1; }
+.home-service-panel .BookingFlight input:focus, .home-service-panel .BookingFlight select:focus { border-color: #70a987; box-shadow: 0 0 0 3px rgba(85, 161, 119, .16); }
+.home-service-panel .submit { background: #267455; }
+.Homemain .box1, .Homemain .entervalue { border-color: #dfe9e1; background: rgba(255,255,255,.82); }
+.Homemain .entervalue:focus { border-color: #70a987; outline-color: rgba(85, 161, 119, .18); }
+.Homemain .tour-card-content a { border-color: #6da887; color: #236a4d; }
+.Homemain .tour-card-content a:hover { background: #eaf3ec; }
+.Homemain .feauteredTours + a { border-color: #6da887; color: #236a4d; }
+.Homemain .feauteredTours + a:hover { background: #eaf3ec; }
+.Homemain .tour-card-content .price { color: #138447; }
+.Homemain .testicard { border-color: #dfe9e1; background: #fff; }
+.Homemain :focus-visible { outline-color: #55a177; }
+
+.mainprofile { color: #19352a; }
+.left-side-profile { border-color: #dfe9e1; background: #fff; }
+.left-side-profile div { color: #68766e; }
+.left-side-profile div:hover, .left-side-profile div button[aria-pressed="true"] { background: #267455; color: #fff; }
+.left-side-profile div button[aria-pressed="true"]:hover { background: #195b40; color: #fff; }
+.profile-overview { border-color: #dfe9e1; background: linear-gradient(180deg, #fff 0%, #f1f7f2 100%); }
+.profilepic { background: #e4f0e7; }
+.profile-stat-icon { background: #e8f2eb; color: #267455; }
+.profileinfo > div { border-color: #dfe9e1; background: #fff; }
+.profile-stat-value, .profile-summary-heading h1 { color: #19352a; }
+.profile-state { border-color: #c8dbce; background: #fff; }
+
+.tour-page-wrapper { background: #f6f9f6; color: #19352a; }
+.tour-page-wrapper .tour-category-badge { background: #267455; }
+.tour-page-wrapper .content-block, .tour-page-wrapper .sticky-booking-card, .tour-page-wrapper .review-card-container, .tour-page-wrapper .checkout-card { border-color: #dfe9e1; background-color: #fff; }
+.tour-page-wrapper .section-title { color: #19352a; }
+.tour-page-wrapper .form-input-field:focus, .tour-page-wrapper .review-field-input:focus, .tour-page-wrapper .review-field-textarea:focus { border-color: #70a987; box-shadow: 0 0 0 3px rgba(85, 161, 119, .16); }
+.tour-page-wrapper .submit-booking-btn, .tour-page-wrapper .review-submit-action, .tour-page-wrapper .checkoutform-class button { background: #267455; }
+.tour-page-wrapper .submit-booking-btn:hover, .tour-page-wrapper .review-submit-action:hover, .tour-page-wrapper .checkoutform-class button:hover { background: #195b40; }
+.bookingsuccess { background: radial-gradient(ellipse at 50% 25%, rgba(188, 220, 194, .38), transparent 36%), #f6f9f6; }
+.bookingsuccess > div { border-color: #dfe9e1; background: #fff; }
+.bookingsuccess button { background: #267455; }
+.bookingsuccess button:hover { background: #195b40; }
+.bookingsuccess .goingbackpayment { background: #e8f2eb; color: #267455; }
+.bookingsuccess .goingbackpayment:hover { background: #195b40; color: #fff; }

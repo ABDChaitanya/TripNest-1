@@ -1,0 +1,122 @@
+.searchable-select {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  color: #26342d;
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.searchable-select__control {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.searchable-select__input {
+  width: 100%;
+  min-width: 0;
+  min-height: 42px;
+  padding: 9px 38px 9px 12px;
+  border: 1px solid #dbe4df;
+  border-radius: 10px;
+  outline: none;
+  background: #fff;
+  color: #26342d;
+  font: inherit;
+  box-sizing: border-box;
+  transition: border-color .18s ease, box-shadow .18s ease;
+}
+
+.searchable-select__input::placeholder {
+  color: #89958e;
+}
+
+.searchable-select__input:focus {
+  border-color: #70a987;
+  box-shadow: 0 0 0 3px rgba(85, 161, 119, .15);
+}
+
+.searchable-select__toggle {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  display: grid;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  place-items: center;
+  transform: translateY(-50%);
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: #718078;
+  cursor: pointer;
+}
+
+.searchable-select__toggle:hover {
+  background: #f0f5f1;
+  color: #267455;
+}
+
+.searchable-select__toggle:focus-visible {
+  outline: 2px solid #70a987;
+  outline-offset: 1px;
+}
+
+.searchable-select__chevron {
+  width: 14px;
+  height: 14px;
+  transition: transform .18s ease;
+}
+
+.searchable-select__chevron.is-open {
+  transform: rotate(180deg);
+}
+
+.searchable-select__options {
+  position: absolute;
+  z-index: 30;
+  top: calc(100% + 5px);
+  right: 0;
+  left: 0;
+  max-height: 9rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border: 1px solid #dfe9e1;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 10px 24px rgba(25, 51, 44, .14);
+  scrollbar-width: thin;
+  scrollbar-color: #c4d4c9 transparent;
+}
+
+.searchable-select__option,
+.searchable-select__empty {
+  padding: 9px 12px;
+  color: #46564d;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.searchable-select__option {
+  cursor: pointer;
+}
+
+.searchable-select__option:hover,
+.searchable-select__option.is-focused {
+  background: #f0f6f1;
+  color: #236a4d;
+}
+
+.searchable-select__option.is-selected {
+  background: #e4f0e7;
+  color: #236a4d;
+  font-weight: 600;
+}
+
+.searchable-select__empty {
+  color: #89958e;
+  font-style: italic;
+}

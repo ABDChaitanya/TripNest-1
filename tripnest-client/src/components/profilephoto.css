@@ -1,51 +1,7 @@
-.profile-photo-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.profile-photo {
-    width: 130px;
-    height: 130px;
-    border-radius: 50%;
-    position: relative;
-    overflow: visible;
-}
-
-/* .profile-photo img,
-.default-avatar {
-    width: 50%;
-    height: 50%;
-    border-radius: 50%;
-    object-fit: cover;
-} */
-
-
-.default-avatar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #eee;
-    font-size: 45px;
-}
-
-.camera-button {
-    
-    width: 100px;
-    height: 100px;
-     
-    position: relative;
-    top: -30px;
-    left: 104px;
-    
-    border-radius: 50%;
-    background: white;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    cursor: pointer;
-
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-}
+.profile-photo-container { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; }
+.profile-photo { position: relative; width: 100%; height: 100%; overflow: visible; border-radius: 50%; }
+.profile-photo-image, .default-avatar { display: grid; width: 100%; height: 100%; place-items: center; border-radius: 50%; object-fit: cover; }
+.default-avatar { background: linear-gradient(145deg, #dbece0, #eef5ef); color: #39745b; font-size: 42px; }
+.camera-button { position: absolute; right: -3px; bottom: -2px; display: grid; width: 34px; height: 34px; place-items: center; border: 3px solid #fff; border-radius: 50%; background: #176b57; color: #fff; font-size: 20px; font-weight: 700; cursor: pointer; box-shadow: 0 3px 10px rgba(25, 51, 44, .2); }
+.camera-button:hover { background: #125743; }
+.camera-button.is-uploading { cursor: progress; opacity: .75; }

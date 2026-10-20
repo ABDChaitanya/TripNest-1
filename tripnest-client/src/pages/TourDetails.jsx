@@ -98,7 +98,7 @@ function TourDetails({ loginId }) {
             <p className="tour-meta-info">
               {/* 📍 {tour.startLocation || tour.location || "Featured Destination"} &bull;  */}
               🗓️ {tour.duration ? `${tour.duration} Days` : "Flexible Duration"} &bull;
-              ⭐ {tour.ratingsAverage.toFixed(2) || "4.8"} ({tour.ratingsQuantity || "12"} reviews)
+              ⭐ {tour.ratingsAverage?.toFixed(2) || "4.8"} ({tour.ratingsQuantity || "12"} reviews)
             </p>
           </div>
         </header>
@@ -224,7 +224,7 @@ function TourDetails({ loginId }) {
           </div>
 
         </main>
-        <Testimonials tour1={review[0].review} tour2={review[1].review} tour3={review[2].review} />
+        <Testimonials tour1={review[0]?.review} tour2={review[1]?.review} tour3={review[2]?.review} />
       </div>
     </>
   );

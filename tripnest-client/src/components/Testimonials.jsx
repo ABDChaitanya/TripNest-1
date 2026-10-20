@@ -1,7 +1,6 @@
-function Testimonials({ tour1, tour2, tour3 }) {
+function Testimonials({ tour1 = "A thoughtful itinerary, beautiful places, and a trip that felt effortless from start to finish.", tour2 = "We found places we would never have discovered on our own. The whole experience was worth remembering.", tour3 = "Easy to plan, lovely to experience, and already making us think about where to go next." }) {
     return (
         <>
-            <h1>What our Travellers Say</h1>
             <div className="testimonials">
                 <div className="testicard">
                     <div>⭐⭐⭐⭐⭐</div>

@@ -1,88 +1,53 @@
-import { useState } from "react";
-import axios from "axios";
-import api from "./../services/api"
-export default function Profilephoto({ user, token, setToken }) {
-    const [photo, setPhoto] = useState(user.Profilephoto || "");
+import { useEffect, useState } from "react";
+import api from "../services/api";
+import "./profilephoto.css";
+
+export default function Profilephoto({ user, token }) {
+    const [photo, setPhoto] = useState(user.profilePhoto || "");
     const [uploading, setUploading] = useState(false);
+
+    useEffect(() => {
+        setPhoto(user.profilePhoto || "");
+    }, [user.profilePhoto]);
+
     const handlePhotoChange = async (e) => {
-        const file = e.target.files[0];
-
+        const file = e.target.files?.[0];
         if (!file) return;
-        // Keep the old photo in case upload fails
-        const previousPhoto = photo;
 
-        // Show preview immediately
+        const previousPhoto = photo;
         const previewUrl = URL.createObjectURL(file);
         setPhoto(previewUrl);
-
         const formData = new FormData();
         formData.append("photo", file);
 
         try {
             setUploading(true);
-
-            const response = await api.put(
-                "/users/profile-photo",
-                formData,
-                {
-                    headers: {
-                        authorization: `Bearer ${token}`
-                    },
-                    withCredentials: true
-                }
-            );
-
-            // Replace preview with actual Cloudinary URL
+            const response = await api.put("/users/profile-photo", formData, {
+                headers: { authorization: `Bearer ${token}` },
+                withCredentials: true
+            });
             setPhoto(response.data.profilePhoto);
-
-            // Free the temporary browser URL
             URL.revokeObjectURL(previewUrl);
-
             alert("Profile photo updated!");
         } catch (error) {
-            // Restore previous photo
             setPhoto(previousPhoto);
-
             URL.revokeObjectURL(previewUrl);
-
-            alert(
-                error.response?.data?.message ||
-                "Photo upload failed"
-            );
+            alert(error.response?.data?.message || "Photo upload failed");
         } finally {
             setUploading(false);
+            e.target.value = "";
         }
     };
 
     return (
         <div className="profile-photo-container">
-
             <div className="profile-photo">
-
-                {photo ? (
-                    <img style={{height: 132, width: 130 ,borderRadius: '50%' ,position: 'relative',top: 13}}
-                src={photo}
-                alt="Profile"
-                    />
-                ) : (
-                <div className="default-avatar">
-                    👤
-                </div>
-                )}
-
-                <label className="camera-button">
-                    📷
-
-                    <input
-                        type="file"
-                        accept="image/*"
-                        onChange={handlePhotoChange}
-                        hidden
-                    />
-                </label> 
-
+                {photo ? <img src={photo} alt="Your profile" className="profile-photo-image" /> : <div className="default-avatar" aria-hidden="true">☺</div>}
+                <label className={`camera-button${uploading ? " is-uploading" : ""}`} title={uploading ? "Uploading photo" : "Upload profile photo"}>
+                    <span aria-hidden="true">{uploading ? "…" : "+"}</span>
+                    <input type="file" accept="image/*" onChange={handlePhotoChange} disabled={uploading} hidden />
+                </label>
             </div>
-
         </div>
     );
 }

@@ -15,7 +15,7 @@ exports.profile_stats = async(req,res)=>{
     }).populate({
             path:'tour',
             select:'name'
-        });
+        }).select('+createdAt');
     const result =  await Booking.aggregate([
         {
             $match:{
@@ -26,7 +26,7 @@ exports.profile_stats = async(req,res)=>{
         {
             $group:{
                 _id:null,
-                totalSpent:{$sum:"$price"}
+                totalSpent:{$sum:{$multiply:["$price","$guests"]}}
             }
         }
     ]);
