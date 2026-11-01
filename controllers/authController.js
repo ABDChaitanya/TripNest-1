@@ -16,15 +16,18 @@ exports.protect = catchAsync(async (req, res, next) => {
         return next(new AppError('You are not logged in!!!', 400));
     }
     const token = req.headers.authorization.split(' ')[1];
+    if(!token){
+        return next(new AppError('Token is not available',401));
+    }
     const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
       const freshUser = await User.findById(decoded.id);
     if (!freshUser) {
         return next(new AppError('The user no longer exists to the given token..', 401))
     }
     // //4)Check if user changed password after jwt is issued
-    // if (freshUser.changedPasswordAfter(decoded.iat)) {
-    //     return next(new AppError('User recently changed password! please log in again', 401));
-    // }
+    if (freshUser.changedPasswordAfter(decoded.iat)) {
+        return next(new AppError('User recently changed password! please log in again', 401));
+    }
     // //Grant acess  to protected route
     req.user = freshUser;
     next();

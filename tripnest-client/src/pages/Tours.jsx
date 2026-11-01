@@ -1,9 +1,10 @@
 import Sortfilter from "../components/Sortfilter";
 import { useState, useEffect } from "react";
 import api from "./../services/api";
-import tourImage from './../assets/new-tour-3.png'
+import tourImage from './../assets/new-tour-3.png';
 import Tourcard from "../components/Tourcard";
 import "./tours.css";
+
 function Tours() {
     const [search, setSearch] = useState("");
     const [tours, setTours] = useState([]);
@@ -15,6 +16,7 @@ function Tours() {
             async function getTours() {
                 try {
                     const trips = await api.get(`/tours/getTours?search=${search}&sort=${sort}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratingsAverage[gte]=${rating}`);
+                    console.log(trips.data);
                     setTours(trips.data.data.docs);
 
                 } catch (err) {
