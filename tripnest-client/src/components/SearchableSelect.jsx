@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './searchableselect.css';
 
 export default function SearchableSelect({ options = [] }) {
@@ -39,7 +39,10 @@ export default function SearchableSelect({ options = [] }) {
 
   // Reset focus index back to top whenever search term updates
   useEffect(() => {
-    setFocusedIndex(0);
+    async function resetFocus() {
+      setFocusedIndex(0);
+    }
+    resetFocus();
   }, [searchTerm]);
 
   const handleSelect = (option) => {

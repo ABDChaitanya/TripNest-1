@@ -15,9 +15,10 @@ function Tours() {
         const timer = setTimeout(() => {
             async function getTours() {
                 try {
+                    console.log('hi1');
                     const trips = await api.get(`/tours/getTours?search=${search}&sort=${sort}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratingsAverage[gte]=${rating}`);
                     console.log(trips.data);
-                    setTours(trips.data.data.docs);
+                    setTours(trips.data.data.tours);
 
                 } catch (err) {
                     console.log(err);

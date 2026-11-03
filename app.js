@@ -1,10 +1,10 @@
-const express  = require('express');
+const express = require('express');
 const helmet = require('helmet');
 const dotenv = require('dotenv');
 const rateLimit = require('express-rate-limit');
 const path = require('path');
 dotenv.config({
-    path: path.join(__dirname, './config.env')
+  path: path.join(__dirname, './config.env')
 });
 const tourRouter = require('./routes/tourRouter');
 const profileRouter = require('./routes/profileRouter');
@@ -21,32 +21,37 @@ const port = process.env.PORT || 3000;
 // const upload = multer({dest:})
 app.use(helmet());
 app.post(
-    '/api/v1/webhooks/stripe',
-    express.raw({ type: 'application/json' }),
-    bookingController.stripeWebhook
+  '/api/v1/webhooks/stripe',
+  express.raw({ type: 'application/json' }),
+  bookingController.stripeWebhook
 );
 
-app.use(express.json({limit:'500kb'}));
+app.use(express.json({ limit: '500kb' }));
 const limiter = rateLimit({
-  windowMs:15*60*1000,
-  limit:100,
-  standardHeaders:'draft-8',
-  legacyHeaders:false,
-  ipv6Subnet:56
+  windowMs: 15 * 60 * 1000,
+  limit: 100,
+  standardHeaders: 'draft-8',
+  legacyHeaders: false,
+  ipv6Subnet: 56
 })
 app.use(limiter);
-const accessOrigins = ["http://localhost:5173",process.env.FRONTEND_URL]
+const accessOrigins = [process.env.FRONTEND_URL, "http://localhost:5173"]
+  .filter(Boolean)
+  .map((origin) => origin.replace(/\/+$/, ''));
+
 app.use(cors({
-  origin:accessOrigins,
-  credentials:true
+  origin: accessOrigins,
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
 }));
-app.set("query parser","extended");
-app.use('/api/v1/flights',flightRouter);
-app.use('/api/v1/profile',profileRouter);
-app.use('/api/v1/tours',tourRouter);
-app.use('/api/v1/users',userRouter);
-app.use('/api/v1/reviews',reviewRouter);
-app.use('/api/v1/bookings',bookingRouter);
+app.set("query parser", "extended");
+app.use('/api/v1/flights', flightRouter);
+app.use('/api/v1/profile', profileRouter);
+app.use('/api/v1/tours', tourRouter);
+app.use('/api/v1/users', userRouter);
+app.use('/api/v1/reviews', reviewRouter);
+app.use('/api/v1/bookings', bookingRouter);
 const DB = process.env.DATABASE.replace(
   '<PASSWORD>',
   process.env.DB_PASSWORD
@@ -55,6 +60,6 @@ const DB = process.env.DATABASE.replace(
 mongoose.connect(DB).then(() => {
   console.log('DB connection successful!');
 });
-app.listen(port,()=>{
-    console.log(`App is running on ${port}`)
+app.listen(port, () => {
+  console.log(`App is running on ${port}`)
 })

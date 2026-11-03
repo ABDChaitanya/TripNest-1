@@ -36,7 +36,6 @@ exports.uploadProfilePhoto = async (req, res) => {
                     message:"User not found"
                 })
             }
-            console.log('hi6');
             user.profilePhoto  = result.secure_url;
             await user.save();
             res.status(200).json({
@@ -48,7 +47,6 @@ exports.uploadProfilePhoto = async (req, res) => {
     );
     stream.end(req.file.buffer);
     }catch(err){
-        console.log('hi');
         res.status(500).json({
             success:false,
             message:err.message

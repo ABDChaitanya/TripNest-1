@@ -67,7 +67,6 @@ function TourDetails({ loginId }) {
   const handleBookingSubmit = async (e) => {
     e.preventDefault();
     try {
-      console.log(bookingData);
       const res = await api.post('/bookings/createBooking', {
         user: bookingData.user,
         date: bookingData.date,

@@ -53,7 +53,6 @@ exports.signup = catchAsync(async (req, res, next) => {
     } catch(err){
         return next(new AppError("Please fill appropriate only",400));
     }
-    console.log(data);
     const user = await User.create({
         name: data.name,
         email: data.email,

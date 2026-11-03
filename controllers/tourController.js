@@ -3,7 +3,7 @@ const factory  = require('./../controllers/handlerFactory');
 const redis = require('./../utils/redis');
 const APIFeatures = require('./../utils/apiFeatures');
 const wishListedTours = [];
-// exports.getAllTours = factory.getAll(Tour);
+//exports.getAllTours = factory.getAll(Tour);
 exports.getTour = factory.getOne(Tour);
 exports.updateTour = factory.updateOne(Tour);
 exports.deleteTour = factory.deleteOne(Tour);
@@ -21,7 +21,7 @@ exports.getAllTours = async(req,res,next)=>{
 
         const tours = await features.query;
         const cacheKey = `tours:${JSON.stringify(req.query)}`;
-        const cachedTours = await redis.getAll(cacheKey);
+        const cachedTours = await redis.get(cacheKey);
         if(cachedTours){
             return res.status(200).json({
                 status:'success',
