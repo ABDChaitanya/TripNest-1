@@ -11,7 +11,25 @@ exports.createTour = factory.createOne(Tour);
 
 exports.getAllTours = async(req,res,next)=>{
     try{
-        /// Retrieve tours from Redis cache
+        const cacheKey = `tours:${JSON.stringify(req.query)}`;
+        if (redis?.status === 'ready') {
+            try {
+                const cachedTours = await redis.get(cacheKey);
+                if (cachedTours) {
+                    const tours = JSON.parse(cachedTours);
+                    return res.status(200).json({
+                        status: 'success',
+                        source: 'cache',
+                        result: tours.length,
+                        data: { tours }
+                    });
+                }
+            } catch (cacheError) {
+                console.warn('Redis cache read failed; using database:', cacheError.message);
+            }
+        }
+
+        // Redis is only an optional cache; the database remains the source of truth.
         const features = new APIFeatures(Tour.find(), req.query)
         .filter()
         .sort()
@@ -20,19 +38,11 @@ exports.getAllTours = async(req,res,next)=>{
         .limitFields();
 
         const tours = await features.query;
-        const cacheKey = `tours:${JSON.stringify(req.query)}`;
-        const cachedTours = await redis.get(cacheKey);
-        if(cachedTours){
-            return res.status(200).json({
-                status:'success',
-                source:'cache',
-                result:JSON.parse(cachedTours).length,
-                data:{
-                    tours:JSON.parse(cachedTours)
-                }
-            })
+        if (redis?.status === 'ready') {
+            redis.set(cacheKey, JSON.stringify(tours), 'EX', 3600).catch((cacheError) => {
+                console.warn('Redis cache write failed:', cacheError.message);
+            });
         }
-        await redis.set(cacheKey,JSON.stringify(tours),'EX',3600);
         res.status(200).json({
             status:'success',
             source:'database',

@@ -27,6 +27,21 @@ app.post(
 );
 
 app.use(express.json({ limit: '500kb' }));
+const accessOrigins = [
+  ...(process.env.FRONTEND_URLS || process.env.FRONTEND_URL || '').split(','),
+  'http://localhost:5173'
+]
+  .filter(Boolean)
+  .map((origin) => origin.trim().replace(/\/+$/, ''));
+
+app.use(cors({
+  origin(origin, callback) {
+    // Allow server-to-server and same-origin requests with no Origin header.
+    callback(null, !origin || accessOrigins.includes(origin));
+  },
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  credentials: true
+}));
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   limit: 100,
@@ -35,16 +50,6 @@ const limiter = rateLimit({
   ipv6Subnet: 56
 })
 app.use(limiter);
-const accessOrigins = [process.env.FRONTEND_URL, "http://localhost:5173"]
-  .filter(Boolean)
-  .map((origin) => origin.replace(/\/+$/, ''));
-
-app.use(cors({
-  origin: accessOrigins,
-  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true
-}));
 app.set("query parser", "extended");
 app.use('/api/v1/flights', flightRouter);
 app.use('/api/v1/profile', profileRouter);
