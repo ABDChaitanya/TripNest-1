@@ -1,9 +1,9 @@
 const Redis = require("ioredis");
 
-// Redis is optional in deployments. Do not silently connect to localhost when
-// the host has no Redis service configured.
-const redis = process.env.REDIS_URL
-  ? new Redis(process.env.REDIS_URL, {
+// Redis is optional. Configure REDIS_URL only when a Redis server is running.
+const redisUrl = process.env.REDIS_URL?.trim();
+const redis = redisUrl
+  ? new Redis(redisUrl, {
       maxRetriesPerRequest: 1,
       enableOfflineQueue: false,
       connectTimeout: 3000
